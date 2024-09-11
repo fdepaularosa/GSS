@@ -63,6 +63,14 @@ This barchart shows gun owners are more likely to favor capital punishment
 #### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+table1 <- xtabs(~OWNGUN + CAPPUN, data=GSSdata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+the numerical descriptive results shows that gun owners favor capital punishment. 
 
 ### Inferential Results
 
