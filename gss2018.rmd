@@ -82,7 +82,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-we reject the null because the p value is less than 0.05
+we reject the null because the p value is less than 0.05 so that means gun ownership and opinion of capital punishment are related 
 
 
 
