@@ -144,6 +144,13 @@ Determine if a persons performance on the wordsum test (WORDSUM) is independent 
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
+question: is a person's performance on a WORDSUM test independent of their level of schooling (DEGREE)
+
+$H_0$: a person's performance on a WORDSUM test is not independent of their DEGREE     
+$H_A$: a person's performace on a WORDSUM test is independent of their DEGREE
+
+WORDSUM ~ DEGREE so use numerical~cat
+
 ##Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
@@ -153,6 +160,11 @@ Determine if a persons performance on the wordsum test (WORDSUM) is independent 
 #### Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+boxplot(WORDSUM~DEGREE,data=GSSdata)
+```
+This boxplot shows that the higher level of education you have, the WORDSUM test scores will increase
 
 #### Numerical Descriptive Results
 
