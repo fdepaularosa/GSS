@@ -8,7 +8,6 @@ output:
     toc: true
 ---
 
-
 ```{r include=FALSE,echo=FALSE}
 require(tigerstats)
 require(tidyverse)
@@ -16,28 +15,24 @@ require(foreign)
 source("GrabData.R")
 ```
 
-
-
-
-#  Question 1
+# Question 1
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
 
-The data in the dataframe GSSdata is from the 2018 General Social Survey. The first blocks of R-code has selected down a subset of the data to just 16 variables. It has further removed unwanted factor levels in much of the data. Examine the code in the GrabData.R file to see what it is doing. Some of the variables are categorical and others are numerical. Be sure to do a variable analysis before tackling each question.  
+The data in the dataframe GSSdata is from the 2018 General Social Survey. The first blocks of R-code has selected down a subset of the data to just 16 variables. It has further removed unwanted factor levels in much of the data. Examine the code in the GrabData.R file to see what it is doing. Some of the variables are categorical and others are numerical. Be sure to do a variable analysis before tackling each question.\
 First question - Is opinion on the death penalty (CAPPUN) independent of gun ownership (OWNGUN)?
-
 
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-Question: Is gun ownership independent of opinion on death penalty? 
+Question: Is gun ownership independent of opinion on death penalty?
 
 $H_0$: gun ownership and opinion on capital punishment are not related
 
 $H_A$: gun ownership and opinion on capital punishment are related
 
-OWNGUN depends ~ CAPPUN both of these are categorical so use cat~cat
+OWNGUN depends \~ CAPPUN both of these are categorical so use cat\~cat
 
 ## Results
 
@@ -49,28 +44,25 @@ OWNGUN depends ~ CAPPUN both of these are categorical so use cat~cat
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
-
 ```{r}
 barchartGC(~OWNGUN + CAPPUN,data=GSSdata)
 barchartGC(~OWNGUN + CAPPUN,data=GSSdata)
 
 ```
 
-
-This barchart shows gun owners are more likely to favor capital punishment 
-
+This barchart shows gun owners are more likely to favor capital punishment
 
 #### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
 ```{r}
 table1 <- xtabs(~OWNGUN + CAPPUN, data=GSSdata)
 rowPerc(table1)
 colPerc(table1)
 ```
 
-
-the numerical descriptive results shows that gun owners favor capital punishment 
+the numerical descriptive results shows that gun owners favor capital punishment
 
 ### Inferential Results
 
@@ -82,11 +74,9 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-we reject the null because the p value is less than 0.05 so that means gun ownership and opinion of capital punishment are related. Fisher's Exact test shows that out of the gun owners, 2.27 percent of gun owners will favor capital punishment 
+we reject the null because the p value is less than 0.05 so that means gun ownership and opinion of capital punishment are related. Fisher's Exact test shows that out of the gun owners, 2.27 percent of gun owners will favor capital punishment
 
-
-
-#  Question 2
+# Question 2
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
 
@@ -96,7 +86,7 @@ Is there a difference in years of education (EDUC) between the those who did or 
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-numerical categorical 
+numerical categorical
 
 ##Results
 
@@ -112,7 +102,7 @@ numerical categorical
 boxplot(EDUC~VOTE12,data=GSSdata)
 ```
 
-people tended to have more education in 2012 because the median is higher. 
+people tended to have more education in 2012 because the median is higher.
 
 #### Numerical Descriptive Results
 
@@ -134,7 +124,7 @@ t.test(EDUC~VOTE12,data=GSSdata)
 
 p-value = 1.248e-07. i reject the null so that means education and those who voted in 2012 are related.
 
-#  Question 3
+# Question 3
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
 
@@ -146,10 +136,10 @@ Determine if a persons performance on the wordsum test (WORDSUM) is independent 
 
 question: is a person's performance on a WORDSUM test independent of their level of schooling (DEGREE)
 
-$H_0$: a person's performance on a WORDSUM test is not independent of their DEGREE     
+$H_0$: a person's performance on a WORDSUM test is not independent of their DEGREE\
 $H_A$: a person's performace on a WORDSUM test is independent of their DEGREE
 
-WORDSUM ~ DEGREE so use numerical~cat
+WORDSUM \~ DEGREE so use numerical\~cat
 
 ##Results
 
@@ -165,7 +155,6 @@ WORDSUM ~ DEGREE so use numerical~cat
 boxplot(WORDSUM~DEGREE,data=GSSdata)
 ```
 
-
 This boxplot shows that the higher level of education you have, the WORDSUM test scores will increase
 
 #### Numerical Descriptive Results
@@ -176,15 +165,25 @@ This boxplot shows that the higher level of education you have, the WORDSUM test
 favstats(WORDSUM~DEGREE,data=GSSdata)
 ```
 
-The numerical descriptive results show that when the level of degree increases, the better their performance on the WORDSUM test is. 
+The numerical descriptive results show that when the level of degree increases, the better their performance on the WORDSUM test is.
 
 ### Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
+```{r}
+model1 <- aov(WORDSUM~DEGREE,data=GSSdata)
+summary.aov(model1)
+```
 
+```{r}
+#we specify the margins starting at the bottom and proceeding clockwise - thus 8.7 is the left side margin to hold the names of the factors
+par(mar = c(3, 8.7, 2, 2))
+plot(TukeyHSD(model1),las=2)
+```
+
+I reject the null because Pr(\>F) 2.5e-07 is less than 0.05 which means that DEGREE has a significant effect on the WORDSUM test so they are related.
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
-
