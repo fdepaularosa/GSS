@@ -187,3 +187,9 @@ I reject the null because Pr(\>F) 2.5e-07 is less than 0.05 which means that DEG
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+DEGREE has a impact on the WORDSUM test. the p value is less than 0.05 which suggests that a higher level of education will help you with the WORDSUM test. 
+Students with less than a high school education had a mean WORDSUM score 6.81. 
+Graduate degree holders had the highest scores on the WORDSUM test with a mean score of 9.52. 
+
+
