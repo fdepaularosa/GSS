@@ -182,7 +182,7 @@ par(mar = c(3, 8.7, 2, 2))
 plot(TukeyHSD(model1),las=2)
 ```
 
-I reject the null because Pr(>F) 2.5e-07 is less than 0.05 which means that DEGREE has a significant effect on the WORDSUM test so they are related.
+I reject the null because Pr(>F) 2.5e-07 is less than 0.05 which means that DEGREE has a significant effect on the WORDSUM test so they are related. There is no difference between high school and junior college. There is no difference between Junior college & bachelors and no difference between bachelors and graduate. 
 
 # Discussion and Conclusion
 
