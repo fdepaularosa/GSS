@@ -136,10 +136,10 @@ Determine if a persons performance on the wordsum test (WORDSUM) is independent 
 
 question: is a person's performance on a WORDSUM test independent of their level of schooling (DEGREE)
 
-$H_0$: a person's performance on a WORDSUM test is not independent of their DEGREE\
-$H_A$: a person's performace on a WORDSUM test is independent of their DEGREE
+$H_0$: a person's performance on a WORDSUM test is not independent of their DEGREE
+$H_A$: a person's performance on a WORDSUM test is independent of their DEGREE
 
-WORDSUM \~ DEGREE so use numerical\~cat
+WORDSUM ~ DEGREE so use numerical~cat
 
 ##Results
 
