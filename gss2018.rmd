@@ -165,7 +165,7 @@ This boxplot shows that the higher level of education you have, the WORDSUM test
 favstats(WORDSUM~DEGREE,data=GSSdata)
 ```
 
-The numerical descriptive results show that when the level of degree increases, the better their performance on the WORDSUM test is.
+The numerical descriptive results show that when the level of degree increases, the better their performance on the WORDSUM test is. The table reflects that a Junior College degree and Bachelor degree have approximately the same mean. 
 
 ### Inferential Results
 
