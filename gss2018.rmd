@@ -74,7 +74,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-we reject the null because the p value is less than 0.05 so that means gun ownership and opinion of capital punishment are related. Fisher's Exact test shows that out of the gun owners, 2.27 percent of gun owners will favor capital punishment
+we reject the null because the p value is less than 0.05 so that means gun ownership and opinion of capital punishment are related. Fisher's Exact test shows that out of the gun owners, 2.27 percent of gun owners will favor capital punishment. 2.27:1 odds ratio. 
 
 # Question 2
 
